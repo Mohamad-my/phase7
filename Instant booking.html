@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="sheet.css">
+    <title>Reservation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+        body {
+            margin: 12px;
+            padding: 20px;
+            background-color: white;
+            background-image: url("images/istockphoto.gif");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        nav ul li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 9pt;
+        }
+        nav ul li a {
+            color: var(--lightColor);
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: 0.4s;
+        }
+        nav ul li a:hover {
+            color: var(--bgColor-1);
+        }
+        legend {
+            padding-top: 0.5rem;
+            color: white;
+        }
+        .ticket {
+            color: white;
+        }
+        .validation-message {
+            color: red;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Travel Company 
+            <span>Reservations Without Limits</span>
+        </h2>
+        <ul>
+            <li><a href="index.html" target="_blank">Home</a></li>
+            <li><a href="support.html" target="_blank">Support</a></li>
+            <li><a href="Services.html" target="_blank">Services</a></li>
+            <li><a href="#reservation" target="_blank">Reservations</a></li>
+            <li><a href="reviews.html" target="_blank">Review</a></li>
+            <li><a href="About.html" target="_blank">About</a></li>
+            <li><a href="location.html" target="_blank">Location</a></li>
+        </ul>
+    </nav>
+
+    <div class="ticket">
+        <form id="reservationForm">
+            <fieldset>
+                <legend>Reservation</legend><br>
+                <div id="datetime"></div><br><br>
+                Enter Email: <input type="text" id="Email" placeholder="Email">
+                <span id="EmailError" class="validation-message"></span>
+                <br><br>
+                Enter Password: <input type="password" id="Password" placeholder="Password">
+                <span id="passwordError" class="validation-message"></span>
+                <br><br>
+                Going Day: <input type="date" id="d1" name="date">
+                Return Day: <input type="date" id="d2" name="date">
+                <span id="dateError" class="validation-message"></span><br><br>
+                Number of Tickets: <input type="number" id="numberticket" min="1" max="10">
+                <span id="numberticketError" class="validation-message"></span><br><br>
+                Choose Your Destination: 
+                <select id="destination">
+                    <option value="select"></option>
+                    <option value="macca">Macca</option>
+                    <option value="switzerland">Switzerland</option>
+                    <option value="french">French</option>
+                    <option value="london">London</option>
+                    <option value="aqaba">Aqaba</option>
+                    <option value="sharm shakh">Sharm Shakh</option>
+                    <option value="nederlands">Nederlands</option>
+                </select>
+                <span id="destinationError" class="validation-message"></span><br><br>
+                Choose the Ticket Class:
+                <select id="t5" name="Choose the ticket class">
+                    <option value="select"></option>
+                    <option value="First class">First Class</option>
+                    <option value="Economy class">Economy Class</option>
+                </select>
+                <span id="t5Error" class="validation-message"></span><br><br>
+                Are you sure: <input type="checkbox" id="checkbox" name="checkbox">
+                <span id="checkboxError" class="validation-message"></span><br><br>
+                <textarea name="message" rows="20" cols="35" id="result" readonly></textarea><br>
+                <button type="submit" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">Submit</button>
+                <button type="reset" onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">Reset</button>
+            </fieldset>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function updateDateTime() {
+            var dateTimeElement = document.getElementById("datetime");
+            var now = new Date();
+            var dateTimeString = "Current Date and Time: " + now.toLocaleDateString() + " " + now.toLocaleTimeString();
+            dateTimeElement.textContent = dateTimeString;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
